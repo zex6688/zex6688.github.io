@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>程泽溪 & 刘美琪</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:#e8f4ff;
+  text-align:center;
+  padding-top:100px;
+  font-family:system-ui;
+}
+h1{
+  color:#2563eb;
+  font-size:28px;
+  margin-bottom:20px;
+}
+p{
+  font-size:20px;
+  color:#334155;
+  margin:10px 0;
+}
+.time{
+  font-size:24px;
+  color:#1d4ed8;
+  font-weight:bold;
+  margin-top:30px;
+}
+.tip{
+  margin-top:40px;
+  font-size:16px;
+  color:#64748b;
+}
+</style>
+</head>
+<body>
+<h1>程泽溪 ❤ 刘美琪</h1>
+<p>我们在一起已经</p>
+<div class="time" id="timeBox"></div>
+<p style="margin-top:30px;">始于：2025年08月08日</p>
+<p class="tip">点击页面任意位置播放音乐</p>
+
+<audio id="bgMusic" loop>
+  <source src="https://music.163.com/song/media/outer/url?id=280033.mp3" type="audio/mpeg">
+
+
+<script>
+const startDate = new Date('2025-08-08 00:00:00');
+const audio = document.getElementById('bgMusic');
+
+function updateTime(){
+  const now = new Date();
+  const diff = now - startDate;
+
+  const day = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hour = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minute = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const second = Math.floor((diff % (1000 * 60)) / 1000);
+
+  document.getElementById("timeBox").innerText = `${day}天 ${hour}时 ${minute}分 ${second}秒`;
+}
+
+updateTime();
+setInterval(updateTime,1000);
+
+// 点击页面播放音乐
+document.body.addEventListener('click',()=>{
+  audio.play();
+});
+</script>
+</body>
+</html>
